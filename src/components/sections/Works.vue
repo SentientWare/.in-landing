@@ -136,18 +136,13 @@
 <script setup lang="ts">
 import { animateSplitText } from '@/animations'
 import { textSplitterIntoChar } from '@/functions'
-import { computed, onBeforeMount, onMounted, ref, useTemplateRef } from 'vue'
+import { onBeforeMount, onMounted, ref, useTemplateRef } from 'vue'
 import gsap from 'gsap'
-import { useWindowSize } from '@vueuse/core'
 
 import { work1, work2, work3, work4, work5 } from '@/assets/videos'
 import { workBg1, workBg2, workBg3, workBg4, workBg5 } from '@/assets/images'
 
 const videoRefs = useTemplateRef<HTMLVideoElement[]>('videoRefs')
-
-const isSmallScreen = computed(() => {
-  return useWindowSize().width.value < 768
-})
 
 const index = ref(0)
 const selectedWorks = ref('Selected Projects /')

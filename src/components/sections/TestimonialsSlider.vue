@@ -19,7 +19,7 @@
           v-for="(testimonial, index) in duplicatedTestimonials" 
           :key="`card-${index}`"
           class="testimonial-card flex-shrink-0"
-          :style="{ width: cardWidth }"
+          :style="{ width: cardWidthPx + 'px' }"
         >
           <div 
             class="h-full rounded-lg border border-flax-smoke-500/20 bg-flax-smoke-50/5 p-5 sm:p-6 transition-all duration-300 hover:border-emerald-500/30 hover:bg-emerald-500/5"
@@ -96,9 +96,7 @@ interface Testimonial {
   tags?: string[];
 }
 
-const props = defineProps<{
-  autoplaySpeed?: number;
-}>();
+
 
 // Testimonial data
 const testimonials: Testimonial[] = [
@@ -156,14 +154,6 @@ const translateX = ref(0);
 const isPaused = ref(false);
 const isAnimating = ref(false);
 let animationFrame: number | null = null;
-let autoplayInterval: ReturnType<typeof setInterval> | null = null;
-
-// Calculate card width based on viewport
-const cardWidth = computed(() => {
-  // This will be handled by CSS grid/flex
-  return 'min(400px, 90vw)';
-});
-
 // Calculate total width of one set of cards
 const getCardWidth = (): number => {
   if (typeof window === 'undefined') return 400;
@@ -213,8 +203,7 @@ const animate = () => {
 
 // Lifecycle
 onMounted(() => {
-  // Calculate initial offset to start from first card
-  const cardWidth = cardWidthPx.value;
+  // Start animation
   translateX.value = 0;
   
   // Start animation
