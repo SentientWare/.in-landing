@@ -203,6 +203,14 @@ const animate = () => {
   animationFrame = requestAnimationFrame(animate);
 };
 
+
+
+
+
+
+
+
+
 // Lifecycle
 onMounted(() => {
   // Calculate initial offset to start from first card
