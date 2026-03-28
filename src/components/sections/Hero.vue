@@ -15,42 +15,47 @@
 
         <!-- Top Row — Animated Text Loop -->
         <div class="w-full overflow-clip">
-          <div class="flex w-full items-center justify-between gap-10">
+          <div class="flex w-full items-center justify-between gap-3 sm:gap-10 flex-nowrap">
+
             <div
-              class="relative h-[1.2em] overflow-hidden text-4xl font-extrabold uppercase tracking-tight md:text-6xl font-fancy">
+              class="relative h-[1.2em] overflow-hidden text-xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold uppercase tracking-tight font-fancy">
               <div class="animate-text-loop flex flex-col">
                 <span class="text-loop-item">We Build</span>
                 <span class="text-loop-item text-emerald-500">We Innovate</span>
                 <span class="text-loop-item">We Deliver</span>
                 <span class="text-loop-item text-emerald-500">We Transform</span>
-                <span class="text-loop-item">We Build</span> <!-- duplicate for seamless loop -->
+                <span class="text-loop-item">We Build</span>
               </div>
             </div>
-            <div class="hide-on-mobile flex items-center gap-3">
+
+            <div class="flex items-center gap-2 sm:gap-3 whitespace-nowrap">
               <span class="status-dot"></span>
-              <span class="font-mono text-xs uppercase tracking-widest text-emerald-600">Available Now</span>
+              <span class="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-emerald-600">
+                Available Now
+              </span>
             </div>
+
           </div>
         </div>
 
         <!-- Main Grid -->
-        <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+        <div class="grid w-full grid-cols-1 gap-y-8 gap-x-6 lg:grid-cols-12 lg:gap-8">
 
           <!-- Left -->
-          <div class="col-span-full flex flex-col items-start gap-6 sm:col-span-5 lg:col-span-4">
+          <div class="col-span-full flex flex-col items-start gap-4 sm:gap-6 sm:col-span-5 lg:col-span-4">
             <p class="company-tag font-mono text-xs uppercase tracking-[0.3em] text-emerald-600 border border-emerald-500/30 bg-emerald-500/5 px-3 py-1.5 rounded-sm cursor-default hover:bg-emerald-500/10 transition-colors"
               @mouseenter="isPulsing = true" @mouseleave="isPulsing = false">
               <span :class="{ 'animate-pulse': isPulsing }">●</span> {{ companyTag }}
             </p>
 
             <p v-html="whoAmI" id="whoAmI"
-              class="who-am-i heading-5 w-full max-w-[30ch] leading-snug font-medium text-balance sm:max-w-[37ch] lg:text-start">
+              class="who-am-i text-lg sm:text-xl md:heading-5 w-full max-w-[30ch] leading-snug font-medium text-balance sm:max-w-[37ch] lg:text-start">
             </p>
 
             <!-- CTA Buttons — fixed -->
-            <div class="flex flex-wrap gap-3">
+            <div class="flex flex-wrap gap-2 sm:gap-3">
               <Button label="Start Project →" url="#contact-section" href="#services"
-                class="group flex items-center gap-1 font-mono text-xs uppercase tracking-wider border border-flax-smoke-500/20 px-5 py-3 rounded-sm hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300">
+                class="group flex items-center gap-1 font-mono text-xs uppercase tracking-wider border border-flax-smoke-500/20 px-4 py-2.5 sm:px-5 sm:py-3 rounded-sm hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300">
 
 
                 <span class="group-hover:translate-x-0.5 inline-block transition-transform">Our Work</span>
@@ -59,10 +64,9 @@
 
             </div>
 
-            <!-- Tech Stack -->
-            <div class="tech-stack flex flex-wrap gap-2">
+            <div class="tech-stack flex flex-wrap gap-1.5 sm:gap-2">
               <span v-for="(tech, idx) in techStack" :key="tech"
-                class="tech-tag font-mono text-[10px] uppercase tracking-wider text-flax-smoke-500/60 border border-flax-smoke-500/15 px-2.5 py-1 rounded-sm hover:border-emerald-500/30 hover:text-emerald-500 hover:bg-emerald-500/5 transition-all duration-200 cursor-default"
+                class="tech-tag font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-flax-smoke-500/60 border border-flax-smoke-500/15 px-2 py-1 sm:px-2.5 sm:py-1 rounded-sm hover:border-emerald-500/30 hover:text-emerald-500 hover:bg-emerald-500/5 transition-all duration-200 cursor-default"
                 :style="{ animationDelay: `${idx * 80}ms` }">
                 {{ tech }}
               </span>
@@ -71,7 +75,7 @@
 
           <!-- Center: Code Card -->
           <div id="profile-container"
-            class="group relative col-span-1 mt-8 h-[35vh] max-w-lg sm:mt-0 sm:h-[45vh] lg:col-span-4 lg:h-[52vh]"
+            class="group relative col-span-1 w-full max-w-[400px] mx-auto sm:mx-0 mt-6 sm:mt-0 sm:h-[45vh] md:h-[40vh] lg:col-span-4 lg:h-[52vh] lg:max-w-none"
             @mouseenter="isCodeHovered = true" @mouseleave="isCodeHovered = false">
             <div
               class="code-card h-full w-full overflow-hidden rounded-lg border border-emerald-500/20 bg-[#0d1117] relative transition-all duration-300"
@@ -81,58 +85,62 @@
               </div>
 
               <div
-                class="relative z-20 flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-4 py-3">
+                class="relative z-20 flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-3 py-2 sm:px-4 sm:py-3">
                 <div class="flex gap-1.5">
-                  <span class="h-2.5 w-2.5 rounded-full bg-red-500/80"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-green-500/80"></span>
+                  <span class="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-red-500/80"></span>
+                  <span class="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-yellow-500/80"></span>
+                  <span class="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-green-500/80"></span>
                 </div>
-                <span class="font-mono text-xs text-white/20">{{ currentCodeFile }}</span>
-                <span class="font-mono text-[10px] text-emerald-400/50">● live</span>
+                <span class="font-mono text-[10px] sm:text-xs text-white/20">{{ currentCodeFile }}</span>
+                <span class="font-mono text-[8px] sm:text-[10px] text-emerald-400/50">● live</span>
               </div>
 
-              <div class="relative z-10 flex flex-col p-5 pt-4">
-                <pre class="font-mono text-xs leading-relaxed"><code v-html="currentCode"></code></pre>
+              <div class="relative z-10 flex flex-col p-3 sm:p-4 pt-3 sm:pt-4">
+                <pre class="font-mono text-[10px] sm:text-xs leading-relaxed"><code v-html="currentCode"></code></pre>
                 <div
-                  class="absolute bottom-8 right-4 font-mono text-6xl font-bold text-emerald-500/[0.07] group-hover:text-emerald-500/[0.13] transition-all duration-300">
+                  class="absolute bottom-4 sm:bottom-8 right-3 sm:right-4 font-mono text-4xl sm:text-6xl font-bold text-emerald-500/[0.07] group-hover:text-emerald-500/[0.13] transition-all duration-300">
                   { }</div>
-                <div class="absolute top-[68px] left-[52px] h-4 w-0.5 bg-emerald-400/70 animate-pulse"></div>
+                <div
+                  class="absolute top-[50px] sm:top-[68px] left-[35px] sm:left-[52px] h-3 sm:h-4 w-0.5 bg-emerald-400/70 animate-pulse">
+                </div>
               </div>
 
-              <div class="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-1.5">
+              <div class="absolute bottom-2 sm:bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-1.5">
                 <button v-for="(_, idx) in codeSnippets" :key="idx" @click.stop="currentCodeIndex = idx"
-                  class="h-1.5 rounded-full transition-all duration-200"
-                  :class="currentCodeIndex === idx ? 'bg-emerald-400 w-4' : 'w-1.5 bg-white/20 hover:bg-white/40'"></button>
+                  class="h-1 rounded-full sm:h-1.5 transition-all duration-200"
+                  :class="currentCodeIndex === idx ? 'bg-emerald-400 w-3 sm:w-4' : 'w-1 sm:w-1.5 bg-white/20 hover:bg-white/40'"></button>
               </div>
             </div>
           </div>
 
           <!-- Right -->
-          <div class="col-span-1 mt-8 size-full text-start sm:mt-0 sm:col-span-3 lg:col-span-4 lg:text-end">
-            <div class="flex w-full flex-col gap-4 sm:items-end">
+          <div class="col-span-1 mt-6 size-full text-start sm:mt-8 sm:col-span-3 lg:col-span-4 lg:text-end">
+            <div class="flex w-full flex-col gap-3 sm:gap-4">
 
               <div
-                class="group w-full cursor-default rounded-lg border border-emerald-500/25 bg-emerald-500/[0.06] px-6 py-5 text-right relative overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:bg-emerald-500/[0.1]">
+                class="group w-full cursor-default rounded-lg border border-emerald-500/25 bg-emerald-500/[0.06] px-4 py-3 sm:px-6 sm:py-5 text-right relative overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:bg-emerald-500/[0.1]">
                 <div
                   class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent">
                 </div>
                 <p
-                  class="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600 mb-2 transition-colors group-hover:text-emerald-500">
+                  class="font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-emerald-600 mb-1.5 sm:mb-2 transition-colors group-hover:text-emerald-500">
                   Currently Available
                 </p>
                 <h3
-                  class="font-fancy text-4xl font-bold leading-none lg:text-5xl transition-transform group-hover:scale-105">
+                  class="font-fancy text-3xl sm:text-4xl lg:text-5xl font-bold leading-none transition-transform group-hover:scale-105">
                   {{ AvailableForWorkDate }}
                 </h3>
               </div>
 
-              <div class="flex w-full flex-col gap-3 sm:flex-row">
+              <div class="flex w-full flex-col gap-2 sm:flex-row sm:gap-3">
                 <div v-for="(stat, idx) in stats" :key="stat.label"
-                  class="stat-item group flex-1 cursor-default border border-flax-smoke-500/10 bg-flax-smoke-500/5 p-3 text-center rounded-md transition-all duration-200 hover:border-emerald-500/30 hover:bg-emerald-500/5"
+                  class="stat-item group flex-1 cursor-default border border-flax-smoke-500/10 bg-flax-smoke-500/5 p-2 sm:p-3 text-center rounded-md transition-all duration-200 hover:border-emerald-500/30 hover:bg-emerald-500/5"
                   :style="{ animationDelay: `${idx * 100}ms` }">
-                  <span class="font-fancy text-2xl font-bold block transition-colors group-hover:text-emerald-500">{{
-                    stat.value }}</span>
-                  <span class="font-mono text-[9px] uppercase tracking-widest text-flax-smoke-500/50">{{ stat.label
+                  <span
+                    class="font-fancy text-xl sm:text-2xl font-bold block transition-colors group-hover:text-emerald-500">{{
+                      stat.value }}</span>
+                  <span class="font-mono text-[8px] sm:text-[9px] uppercase tracking-widest text-flax-smoke-500/50">{{
+                    stat.label
                     }}</span>
                 </div>
               </div>
@@ -142,7 +150,8 @@
         </div>
 
         <!-- Bottom Row -->
-        <div class="mt-10 flex w-full flex-col items-center justify-between gap-4 border-t border-flax-smoke-500/[0.06] pt-6 sm:flex-row sm:gap-0">
+        <div
+          class="mt-8 sm:mt-10 flex w-full flex-col items-center justify-between gap-4 border-t border-flax-smoke-500/[0.06] pt-4 sm:pt-6 sm:flex-row sm:gap-0">
           <span
             class="select-none font-fancy text-[clamp(32px,6vw,90px)] font-bold tracking-tighter text-flax-smoke-500/[0.08] uppercase hidden sm:block">Build</span>
           <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-flax-smoke-500/30 scroll-hint">↓ Scroll to

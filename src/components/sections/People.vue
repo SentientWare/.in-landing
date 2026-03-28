@@ -27,31 +27,13 @@
       </div>
     </div>
 
-    <Slider />
+    <!-- Infinite Testimonial Slider -->
+    <div class="mt-12 w-full">
+      <TestimonialsSlider />
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-  // import gsap from 'gsap';
-  // import { ScrollTrigger } from 'gsap/all';
-  // import { onMounted } from 'vue';
-  //import { Slider } from '../design';
-
-  // gsap.registerPlugin(ScrollTrigger);
-
-  // const animatePeopleSectionLeave = (id: string) => {
-  //   gsap.to(id, {
-  //     scrollTrigger: {
-  //       trigger: id,
-  //       markers: true,
-  //       start: 'top 80%',
-  //       end: '100% end',
-  //     },
-  //     duration: 0.7,
-  //     y: '0',
-  //   });
-  // };
-  // onMounted(() => {
-  //   animatePeopleSectionLeave('#testimonials-section');
-  // });
+  import TestimonialsSlider from './TestimonialsSlider.vue';
 </script>
