@@ -138,6 +138,7 @@ import { animateSplitText } from '@/animations'
 import { textSplitterIntoChar } from '@/functions'
 import { onBeforeMount, onMounted, ref, useTemplateRef } from 'vue'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
 
 import { work1, work2, work3, work4, work5 } from '@/assets/videos'
 import { workBg1, workBg2, workBg3, workBg4, workBg5 } from '@/assets/images'
@@ -237,6 +238,9 @@ onBeforeMount(() => {
 onMounted(() => {
   stopAllVideos()
 
+  // Register ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger)
+
   const observer = new IntersectionObserver(handleIntersection, {
     threshold: 0.75,
   })
@@ -252,5 +256,39 @@ onMounted(() => {
     0.01,
     0,
   )
+
+  // ScrollTrigger to update index number based on scroll position
+  const workCards = document.querySelectorAll('.work-card')
+  const indexElement = document.querySelector('#index')
+  
+  workCards.forEach((card, i) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => {
+        if (index.value !== i) {
+          // Animate the index number change
+          gsap.fromTo(
+            '#index',
+            { scale: 1.5, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' }
+          )
+          index.value = i
+        }
+      },
+      onEnterBack: () => {
+        if (index.value !== i) {
+          // Animate the index number change
+          gsap.fromTo(
+            '#index',
+            { scale: 1.5, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' }
+          )
+          index.value = i
+        }
+      },
+    })
+  })
 })
 </script>
