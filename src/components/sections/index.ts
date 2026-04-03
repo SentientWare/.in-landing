@@ -4,6 +4,7 @@ import Services from './Services.vue';
 import Works from './Works.vue';
 import aboutMe from './aboutMe.vue';
 import People from './People.vue';
+import PrivacyPolicy from './PrivacyPolicy.vue';
 export { default as Internship } from './Internship.vue';
 
-export { Hero, Services, Works, aboutMe, People, Contact };
+export { Hero, Services, Works, aboutMe, People, Contact, PrivacyPolicy };

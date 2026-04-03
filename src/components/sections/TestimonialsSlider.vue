@@ -32,7 +32,7 @@
             </div>
 
             <!-- Testimonial Text -->
-            <p class="font-fancy text-base sm:text-lg text-flax-smoke-200 leading-relaxed mb-6 line-clamp-4">
+            <p class="font-fancy text-base sm:text-lg text-flax-smoke-300 leading-relaxed mb-6 line-clamp-4">
               "{{ testimonial.quote }}"
             </p>
 
@@ -58,10 +58,10 @@
 
               <!-- Name and Role -->
               <div class="flex-1 min-w-0">
-                <p class="font-fancy text-sm sm:text-base font-semibold text-flax-smoke-100 truncate">
+                <p class="font-fancy text-sm sm:text-base font-semibold text-flax-smoke-200 truncate">
                   {{ testimonial.author }}
                 </p>
-                <p class="font-mono text-[10px] sm:text-xs text-flax-smoke-400 truncate">
+                <p class="font-mono text-[10px] sm:text-xs text-flax-smoke-300 truncate">
                   {{ testimonial.position }}
                 </p>
               </div>
@@ -72,7 +72,7 @@
               <span 
                 v-for="tag in testimonial.tags" 
                 :key="tag"
-                class="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm border border-flax-smoke-500/30 text-flax-smoke-400"
+                class="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm border border-flax-smoke-500/30 text-flax-smoke-300"
               >
                 {{ tag }}
               </span>

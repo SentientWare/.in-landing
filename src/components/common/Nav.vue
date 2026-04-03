@@ -54,8 +54,8 @@
           <Link
             class="text-sm font-medium tracking-wider sm:text-base"
             tag="p"
-            label="info@sentientware.com"
-            url="mailto:info@sentientware.com"
+            label="info@sentientware.in"
+            url="mailto:info@sentientware.in"
           />
           <div class="mt-4 flex flex-wrap justify-start gap-1 sm:mt-6">
             <Button

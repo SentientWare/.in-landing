@@ -54,7 +54,7 @@ const socialLinks = [
 const resourceLinks = [
   {
     label: 'Privacy Policy',
-    url: 'https://sentientware.in/privacy-policy',
+    url: '#privacy-policy',
   },
   {
     label: 'Internships',
