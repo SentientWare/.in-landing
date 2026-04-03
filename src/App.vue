@@ -43,6 +43,8 @@
   <Navbar @isLocked="LockeScroll" />
 
   <main class="relative min-h-full">
+    <PrivacyPolicy v-if="showPrivacyPolicy" />
+    <template v-else>
     <Hero />
     <div
       class="text-flax-smoke-200 relative rounded-t-3xl bg-[#0B0B0A] py-[5%]"
@@ -57,6 +59,7 @@
     <Internship /> 
     <People />
     <Contact />
+    </template>
   </main>
 
   <Footer />
@@ -71,6 +74,7 @@
     aboutMe,
     Internship,
     Contact,
+    PrivacyPolicy
   } from '@/components/sections';
   import { onMounted, type Ref, ref, watch } from 'vue';
   import {
@@ -86,6 +90,7 @@
   import { lenis, raf } from './main';
   const { width, height } = useWindowSize();
   const noise: Ref<HTMLElement | null> = ref(null);
+  const showPrivacyPolicy = ref(false);
 
   const isSamsungBrowser = /samsung/i.test(navigator.userAgent);
 
@@ -106,6 +111,25 @@
 
   onMounted(() => {
     document.body.classList.add('stop-scrolling');
+    
+    // Check for privacy policy hash
+    if (window.location.hash === '#privacy-policy') {
+      showPrivacyPolicy.value = true;
+      setTimeout(() => {
+        lenis.scrollTo('#privacy-policy', { duration: 1 });
+      }, 100);
+    }
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', () => {
+      showPrivacyPolicy.value = window.location.hash === '#privacy-policy';
+      if (showPrivacyPolicy.value) {
+        setTimeout(() => {
+          lenis.scrollTo('#privacy-policy', { duration: 1 });
+        }, 100);
+      }
+    });
+
     // TODO:
     // window.scrollTo(0, 0);
 

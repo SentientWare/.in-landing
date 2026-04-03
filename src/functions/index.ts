@@ -64,6 +64,12 @@ const getAvailableForWorkDate = () => {
 };
 
 const gotoSection = (url: string) => {
+  // Handle privacy policy specially to show the component
+  if (url === '#privacy-policy') {
+    window.location.hash = 'privacy-policy';
+    return;
+  }
+  
   lenis.start();
   if (url === '#testimonials-section') {
     lenis.scrollTo('#slider', { duration: 3 });
