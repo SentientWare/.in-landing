@@ -96,7 +96,7 @@
                   <Search class="w-5 h-5 text-gray-400" />
                 </div>
                 <div class="absolute inset-y-0 left-14 flex items-center pointer-events-none">
-                  <span class="text-gray-400 text-lg font-medium">SWT/SU25/</span>
+                  <span class="text-gray-400 text-lg font-medium">SWT/SU26/</span>
                 </div>
                 <input
                   type="text"
@@ -108,7 +108,7 @@
                 />
               </div>
               <p class="text-xs text-gray-400 mt-2 font-fancy">
-                Complete ID: SWT/SU25/{{ certId || "XXX" }}
+                Complete ID: SWT/SU26/{{ certId || "XXX" }}
               </p>
             </div>
 
@@ -286,8 +286,8 @@ const handleVerify = async () => {
   loading.value = true;
   const dbRef = firebaseRef(getDatabase(app));
   try {
-    // Use the new database structure: certificates/SU25/{certId}
-    const snapshot = await get(child(dbRef, `certificates/SU25/${certId.value}`));
+    // Use the new database structure: certificates/SU26/{certId}
+    const snapshot = await get(child(dbRef, `certificates/SU26/${certId.value}`));
     if (snapshot.exists()) {
       data.value = snapshot.val();
       notFound.value = false;
