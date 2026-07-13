@@ -10,6 +10,12 @@ export default defineConfig({
   build: {
     sourcemap: true,
     chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        'verify-certificate': 'verify-certificate/index.html'
+      }
+    }
   },
   plugins: [
     tailwindcss(),
