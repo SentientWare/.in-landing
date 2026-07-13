@@ -5,6 +5,7 @@ import Works from './Works.vue';
 import aboutMe from './aboutMe.vue';
 import People from './People.vue';
 import PrivacyPolicy from './PrivacyPolicy.vue';
+import VerifyCertificate from './VerifyCertificate.vue';
 export { default as Internship } from './Internship.vue';
 
-export { Hero, Services, Works, aboutMe, People, Contact, PrivacyPolicy };
+export { Hero, Services, Works, aboutMe, People, Contact, PrivacyPolicy, VerifyCertificate };
