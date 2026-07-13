@@ -44,6 +44,7 @@
 
   <main class="relative min-h-full">
     <PrivacyPolicy v-if="showPrivacyPolicy" />
+    <VerifyCertificate v-else-if="showVerifyCertificate" @close="closeVerifyCertificate" />
     <template v-else>
     <Hero />
     <div
@@ -74,7 +75,8 @@
     aboutMe,
     Internship,
     Contact,
-    PrivacyPolicy
+    PrivacyPolicy,
+    VerifyCertificate
   } from '@/components/sections';
   import { onMounted, type Ref, ref, watch } from 'vue';
   import {
@@ -91,6 +93,7 @@
   const { width, height } = useWindowSize();
   const noise: Ref<HTMLElement | null> = ref(null);
   const showPrivacyPolicy = ref(false);
+  const showVerifyCertificate = ref(false);
 
   const isSamsungBrowser = /samsung/i.test(navigator.userAgent);
 
@@ -109,29 +112,45 @@
     }
   });
 
+  const checkRouting = () => {
+    showPrivacyPolicy.value = window.location.hash === '#privacy-policy';
+    
+    const isPathnameVerify = window.location.pathname === '/verify-certificate' || window.location.pathname === '/verify-certificate/';
+    const isHashVerify = window.location.hash === '#verify-certificate';
+    showVerifyCertificate.value = isPathnameVerify || isHashVerify;
+    
+    console.log("Routing Check:", { 
+      hash: window.location.hash, 
+      pathname: window.location.pathname, 
+      showVerifyCertificate: showVerifyCertificate.value, 
+      showPrivacyPolicy: showPrivacyPolicy.value 
+    });
+
+    if (showPrivacyPolicy.value || showVerifyCertificate.value) {
+      lenis.stop();
+      window.scrollTo(0, 0);
+    } else {
+      lenis.start();
+    }
+  };
+
+  const closeVerifyCertificate = () => {
+    if (window.location.hash === '#verify-certificate') {
+      window.location.hash = '';
+    } else if (window.location.pathname === '/verify-certificate' || window.location.pathname === '/verify-certificate/') {
+      window.history.pushState({}, '', '/');
+    }
+    checkRouting();
+  };
+
   onMounted(() => {
     document.body.classList.add('stop-scrolling');
     
-    // Check for privacy policy hash
-    if (window.location.hash === '#privacy-policy') {
-      showPrivacyPolicy.value = true;
-      setTimeout(() => {
-        lenis.scrollTo('#privacy-policy', { duration: 1 });
-      }, 100);
-    }
+    checkRouting();
 
-    // Listen for hash changes
-    window.addEventListener('hashchange', () => {
-      showPrivacyPolicy.value = window.location.hash === '#privacy-policy';
-      if (showPrivacyPolicy.value) {
-        setTimeout(() => {
-          lenis.scrollTo('#privacy-policy', { duration: 1 });
-        }, 100);
-      }
-    });
-
-    // TODO:
-    // window.scrollTo(0, 0);
+    // Listen for routing changes
+    window.addEventListener('hashchange', checkRouting);
+    window.addEventListener('popstate', checkRouting);
 
     setTimeout(() => {
       requestAnimationFrame(raf);
