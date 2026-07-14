@@ -328,13 +328,7 @@
           </div>
         </article>
 
-      </div>
-
-      <!-- Footer -->
-      <footer class="mt-16 border-t border-flax-smoke-800 pt-8 text-center">
-        <p class="text-flax-smoke-400 font-medium">&copy; 2025 SentientWare Tech Solution Pvt. Ltd. All rights reserved.</p>
-      </footer>
-
+    </div>
     </div>
   </section>
 </template>

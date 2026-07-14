@@ -40,7 +40,7 @@
   </div>
 
   <Cursor />
-  <Navbar @isLocked="LockeScroll" />
+  <Navbar v-if="!showPrivacyPolicy && !showVerifyCertificate" @isLocked="LockeScroll" />
 
   <main class="relative min-h-full">
     <PrivacyPolicy v-if="showPrivacyPolicy" />
@@ -63,7 +63,7 @@
     </template>
   </main>
 
-  <Footer />
+  <Footer :class="{'bg-slate-950 text-slate-200': showVerifyCertificate, 'bg-[#0B0B0A] text-flax-smoke-200': showPrivacyPolicy}" />
 </template>
 
 <script setup lang="ts">
@@ -127,7 +127,7 @@
     });
 
     if (showPrivacyPolicy.value || showVerifyCertificate.value) {
-      lenis.stop();
+      lenis.start();
       window.scrollTo(0, 0);
     } else {
       lenis.start();
